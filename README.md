@@ -1,5 +1,5 @@
 # Logistic Regression - From-Scratch
-Detecting a cancer cell and determining whether if it is malignant or not is important.
+Determining a cancer cell whether it is malignant or not.
 
 ![ex1](https://github.com/Frightera/LR-From-Scratch/blob/master/Images/Cost-Iteration.png)
 
