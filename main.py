@@ -124,10 +124,10 @@ def predict(w,b,x_test):
     # x_test is a input for forward propagation
     z = sigmoid(np.dot(w.T,x_test)+b)
     Y_prediction = np.zeros((1,x_test.shape[1]))
-    # if z is bigger than 0.64, our prediction is one - true (y_hat=1),
-    # if z is smaller than 0.64, our prediction is sign zero - false (y_hat=0),
+    # if z is bigger than 0.5, our prediction is one - true (y_hat=1),
+    # if z is smaller than 0.5, our prediction is sign zero - false (y_hat=0),
     for i in range(z.shape[1]):
-        if z[0,i]<= 0.64:
+        if z[0,i]<= 0.5:
             Y_prediction[0,i] = 0
         else:
             Y_prediction[0,i] = 1
@@ -170,6 +170,7 @@ Cost after iteration 208: 0.081519
 Cost after iteration 221: 0.080472
 Cost after iteration 234: 0.079495
 Cost after iteration 247: 0.078580
-test accuracy: 98.6013986013986 %
+if z > 0.64 then y_hat = true, this implies accuracy as 98.60%
+if z > 0.5 then y_hat = true, this implies accuracy as 97.90%
 """
 # %%
