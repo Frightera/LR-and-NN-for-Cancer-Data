@@ -79,6 +79,7 @@ def sigmoid(n):
 def forward_backward_propagation(w,b,x_train,y_train):
     # forward propagation
     z = np.dot(w.T,x_train) + b
+    #y_train = y_train.T.reshape(-1,1)
     y_hat = sigmoid(z)
     loss = -(y_train*np.log(y_hat)+(1-y_train)*np.log(1-y_hat))
     cost = (np.sum(loss))/x_train.shape[1]      # x_train.shape[1]  is for scaling
@@ -104,7 +105,7 @@ def update(w, b, x_train, y_train, learning_rate,number_of_iteration):
         # lets update
         w = w - learning_rate * gradients["derivative_weight"]
         b = b - learning_rate * gradients["derivative_bias"]
-        if i % 13 == 0: # that's arbitrary, you can set it differently
+        if i % 100 == 0: # that's arbitrary, you can set it differently
             cost_list2.append(cost)
             index.append(i)
             print ("Cost after iteration %i: %f" %(i, cost))
@@ -143,34 +144,45 @@ def logistic_regression(x_train, y_train, x_test, y_test, learning_rate , num_it
     parameters, gradients, cost_list = update(w, b, x_train, y_train, learning_rate,num_iterations)
     
     y_prediction_test = predict(parameters["weight"],parameters["bias"],x_test)
-
+    y_pred_train = predict(parameters["weight"],parameters["bias"],x_train)
     # Print accuracy
     print("test accuracy: {} %".format(100 - np.mean(np.abs(y_prediction_test - y_test)) * 100))
+    print("train accuracy: {} %".format(100 - np.mean(np.abs(y_pred_train - y_train)) * 100))
+
     
-logistic_regression(x_train, y_train, x_test, y_test,learning_rate = 10, num_iterations = 250)
-#learning rate & # of iterations are arbitrary, hyperparameter tuning.
+logistic_regression(x_train, y_train, x_test, y_test,learning_rate = 1, num_iterations = 1500)
 """
 Cost after iteration 0: 0.693035
-Cost after iteration 13: 0.219091
-Cost after iteration 26: 0.134309
-Cost after iteration 39: 0.120401
-Cost after iteration 52: 0.111365
-Cost after iteration 65: 0.105184
-Cost after iteration 78: 0.100691
-Cost after iteration 91: 0.097229
-Cost after iteration 104: 0.094427
-Cost after iteration 117: 0.092072
-Cost after iteration 130: 0.090038
-Cost after iteration 143: 0.088245
-Cost after iteration 156: 0.086640
-Cost after iteration 169: 0.085189
-Cost after iteration 182: 0.083863
-Cost after iteration 195: 0.082645
-Cost after iteration 208: 0.081519
-Cost after iteration 221: 0.080472
-Cost after iteration 234: 0.079495
-Cost after iteration 247: 0.078580
-if z > 0.64 then y_hat = true, this implies accuracy as 98.60%
-if z > 0.5 then y_hat = true, this implies accuracy as 97.90%
+Cost after iteration 100: 0.226383
+Cost after iteration 200: 0.176670
+Cost after iteration 300: 0.153585
+Cost after iteration 400: 0.139306
+Cost after iteration 500: 0.129319
+Cost after iteration 600: 0.121835
+Cost after iteration 700: 0.115963
+Cost after iteration 800: 0.111204
+Cost after iteration 900: 0.107248
+Cost after iteration 1000: 0.103893
+Cost after iteration 1100: 0.101001
+Cost after iteration 1200: 0.098474
+Cost after iteration 1300: 0.096240
+Cost after iteration 1400: 0.094247
+train accuracy: 98.12206572769954 %
+# test accuracy: 97.2027972027972 %
+"""
+# %% Sklearn
+from sklearn.linear_model import LogisticRegression
+
+x_train = x_train.T
+x_test = x_test.T
+y_train = y_train.T
+y_test = y_test.T
+
+logreg = LogisticRegression(random_state = 13,max_iter= 1500)
+print("test accuracy: {} ".format(logreg.fit(x_train, y_train).score(x_test, y_test)))
+print("train accuracy: {} ".format(logreg.fit(x_train, y_train).score(x_train, y_train)))
+"""
+test accuracy: 0.986013986013986 
+train accuracy: 0.9671361502347418 
 """
 # %%
