@@ -1,7 +1,7 @@
 # Logistic Regression - From-Scratch
 Determining a cancer cell whether it is malignant or not.
 
-![ex1](https://github.com/Frightera/LR-From-Scratch/blob/master/Images/Cost-Iteration.png)
+![ex1](https://raw.githubusercontent.com/Frightera/LR-From-Scratch/master/Images/Learning%20Rate%20Updated.png)
 
 #### Scratch Accuracy
 * train accuracy: 98.12206572769954 %
