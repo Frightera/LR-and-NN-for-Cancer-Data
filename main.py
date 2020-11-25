@@ -149,7 +149,30 @@ def logistic_regression(x_train, y_train, x_test, y_test, learning_rate , num_it
     print("test accuracy: {} %".format(100 - np.mean(np.abs(y_prediction_test - y_test)) * 100))
     print("train accuracy: {} %".format(100 - np.mean(np.abs(y_pred_train - y_train)) * 100))
 
+# %% Hyperparameter tuning
     
+logistic_regression(x_train, y_train, x_test, y_test,learning_rate = 3, num_iterations = 1500)
+"""
+Cost after iteration 0: 0.693035
+Cost after iteration 100: 0.153169
+Cost after iteration 200: 0.121662
+Cost after iteration 300: 0.107146
+Cost after iteration 400: 0.098404
+Cost after iteration 500: 0.092401
+Cost after iteration 600: 0.087937
+Cost after iteration 700: 0.084435
+Cost after iteration 800: 0.081582
+Cost after iteration 900: 0.079191
+Cost after iteration 1000: 0.077143
+Cost after iteration 1100: 0.075359
+Cost after iteration 1200: 0.073784
+Cost after iteration 1300: 0.072378
+Cost after iteration 1400: 0.071111
+No handles with labels found to put in legend.
+test accuracy: 98.6013986013986 %
+train accuracy: 98.35680751173709 %
+"""
+
 logistic_regression(x_train, y_train, x_test, y_test,learning_rate = 1, num_iterations = 1500)
 """
 Cost after iteration 0: 0.693035
@@ -162,14 +185,38 @@ Cost after iteration 600: 0.121835
 Cost after iteration 700: 0.115963
 Cost after iteration 800: 0.111204
 Cost after iteration 900: 0.107248
+No handles with labels found to put in legend.
 Cost after iteration 1000: 0.103893
 Cost after iteration 1100: 0.101001
 Cost after iteration 1200: 0.098474
 Cost after iteration 1300: 0.096240
 Cost after iteration 1400: 0.094247
+test accuracy: 97.9020979020979 %
 train accuracy: 98.12206572769954 %
-# test accuracy: 97.2027972027972 %
 """
+
+logistic_regression(x_train, y_train, x_test, y_test,learning_rate = 0.3, num_iterations = 1500)
+"""
+Cost after iteration 0: 0.693035
+Cost after iteration 100: 0.357455
+Cost after iteration 200: 0.274917
+Cost after iteration 300: 0.235865
+Cost after iteration 400: 0.212165
+Cost after iteration 500: 0.195780
+Cost after iteration 600: 0.183524
+Cost after iteration 700: 0.173868
+Cost after iteration 800: 0.165980
+Cost after iteration 900: 0.159363
+Cost after iteration 1000: 0.153700
+Cost after iteration 1100: 0.148775
+Cost after iteration 1200: 0.144439
+Cost after iteration 1300: 0.140581
+Cost after iteration 1400: 0.137119
+No handles with labels found to put in legend.
+test accuracy: 97.9020979020979 %
+train accuracy: 96.94835680751174 %
+"""
+
 # %% Sklearn
 from sklearn.linear_model import LogisticRegression
 
@@ -178,7 +225,7 @@ x_test = x_test.T
 y_train = y_train.T
 y_test = y_test.T
 
-logreg = LogisticRegression(random_state = 13,max_iter= 1500)
+logreg = LogisticRegression(random_state = 42,max_iter= 1500)
 print("test accuracy: {} ".format(logreg.fit(x_train, y_train).score(x_test, y_test)))
 print("train accuracy: {} ".format(logreg.fit(x_train, y_train).score(x_train, y_train)))
 """
