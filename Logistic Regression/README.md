@@ -4,8 +4,8 @@ Determining a cancer cell whether it is malignant or not.
 ![ex1](https://raw.githubusercontent.com/Frightera/LR-From-Scratch/master/Logistic%20Regression/Images/Learning%20Rate%20Updated.png)
 
 #### Scratch Accuracy
-* train accuracy: 98.12206572769954 %
-* test accuracy: 97.2027972027972 %
+* test accuracy: 98.6013986013986 %
+* train accuracy: 98.35680751173709 %
 
 #### Sklearn Accuracy
 * test accuracy: 0.986013986013986 
