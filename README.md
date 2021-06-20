@@ -1,8 +1,8 @@
 # LR-and-NN-for-Cancer-Data
 
 ## 1) Logistic Regression
-* It was implemented from scratch, no libraries used.
-
+* It is implemented from scratch.
+ 
 ### What is Logistic Regression?
 * Logistic regression is a type of regression analysis.
 Regression analysis is a type of predictive modeling technique which is 
